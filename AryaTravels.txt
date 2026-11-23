@@ -1,0 +1,33 @@
+===== ARYA TRAVELS =====
+Thank you! Your seat is booked.
+Passenger Name: hgf
+Passenger Gender: male
+Passenger Age: 45
+Bus Number: 3
+From: Jaipur
+To: Sikar
+Seat Number: 1
+========================
+
+===== ARYA TRAVELS =====
+Thank you! Your seat is booked.
+Passenger Name: fds
+Passenger Gender: male
+Passenger Age: 45
+Bus Number: 3
+From: Jaipur
+To: Sikar
+Seat Number: 1
+========================
+
+===== ARYA TRAVELS =====
+Thank you! Your seat is booked.
+Passenger Name: gfdss
+Passenger Gender: male
+Passenger Age: 43
+Bus Number: 3
+From: Jaipur
+To: Sikar
+Seat Number: 2
+========================
+
