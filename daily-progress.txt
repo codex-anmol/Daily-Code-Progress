@@ -1,0 +1,2 @@
+My GitHub coding journey started!
+Day 1 - Setting up Git and GitHub.
