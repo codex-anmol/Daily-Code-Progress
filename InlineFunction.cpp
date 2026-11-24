@@ -2,15 +2,22 @@
 
 #include <iostream>
 using namespace std;
-
-inline int square(int x)
-{
-    return x * x;
-}
-
+class hello{
+    public:
+    inline void hi()
+    {
+        cout << "Inline Function" << endl;
+    }
+};
 int main()
 {
-    cout << "Square = " << square(5);
-
+    hello h;
+    h.hi();
     return 0;
 }
+
+//inline fun does not work with
+//loop
+//goto
+//recursion
+//switch
