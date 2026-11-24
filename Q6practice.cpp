@@ -10,32 +10,84 @@ WAP: Create an abstract class Payment with a pure virtual function processPaymen
 
 Expected output: Payment method, transaction amount, and status for each payment type.*/
 #include <iostream>
-#include <string>
 using namespace std;
-class Payment {
+
+// Abstract class
+class Payment
+{
+protected:
+    float amount;
+
 public:
-    
-virtual void processPayment(double amount) = 0; // Pure virtual function
+    Payment(float a)
+    {
+        amount = a;
+    }
 
+    // Pure virtual function
+    virtual void processPayment() = 0;
 };
-int main() {
-    double amount;
-    cout << "Enter the transaction amount: ";
-    cin >> amount;
 
-    // Create objects of derived classes and call processPayment
-    CreditCardPayment creditCard;
-    UPIPayment upi;
-    NetBankingPayment netBanking;
+// Derived class 1
+class CreditCardPayment : public Payment
+{
+public:
+    CreditCardPayment(float a) : Payment(a) {}
 
-    cout << "\nProcessing Credit Card Payment:\n";
-    creditCard.processPayment(amount);
+    void processPayment()
+    {
+        cout << "\nPayment Method: Credit Card";
+        cout << "\nAmount: Rs. " << amount;
+        cout << "\nStatus: Payment Successful";
+    }
+};
 
-    cout << "\nProcessing UPI Payment:\n";
-    upi.processPayment(amount);
+// Derived class 2
+class UPIPayment : public Payment
+{
+public:
+    UPIPayment(float a) : Payment(a) {}
 
-    cout << "\nProcessing Net Banking Payment:\n";
-    netBanking.processPayment(amount);
+    void processPayment()
+    {
+        cout << "\nPayment Method: UPI";
+        cout << "\nAmount: Rs. " << amount;
+        cout << "\nStatus: Payment Successful";
+    }
+};
+
+// Derived class 3
+class NetBankingPayment : public Payment
+{
+public:
+    NetBankingPayment(float a) : Payment(a) {}
+
+    void processPayment()
+    {
+        cout << "\nPayment Method: Net Banking";
+        cout << "\nAmount: Rs. " << amount;
+        cout << "\nStatus: Payment Successful";
+    }
+};
+
+int main()
+{
+    CreditCardPayment c(5000);
+    UPIPayment u(2000);
+    NetBankingPayment n(3000);
+
+    Payment *p;
+
+    cout << "\n--- Payment Details ---";
+
+    p = &c;
+    p->processPayment();
+
+    p = &u;
+    p->processPayment();
+
+    p = &n;
+    p->processPayment();
 
     return 0;
 }

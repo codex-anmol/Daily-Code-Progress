@@ -8,68 +8,87 @@ WAP: Create a class Student containing roll number, name, and marks in five subj
 
 Expected output: Student result, grade, and total student count.*/
 #include <iostream>
-#include <string>
 using namespace std;
-class Student {
+
+class Student
+{
+private:
+    int rollNo;
+    string name;
+    float marks[5];
+    float total, percentage;
+    static int count;
+
 public:
-    int rollNumber;
-    string name;
-    int marks[5];
-    int totalMarks;
-    float percentage;
-    char grade;
-    static int studentCount; // Static data member to count student objects
-    void calculateResult() {
-        totalMarks = 0;
-        for (int i = 0; i < 5; ++i) {
-            totalMarks += marks[i];
-        }
-        percentage = static_cast<float>(totalMarks) / 5.0f;
 
-        if (percentage >= 90) {
-            grade = 'A';
-        } else if (percentage >= 80) {
-            grade = 'B';
-        } else if (percentage >= 70) {
-            grade = 'C';
-        } else if (percentage >= 60) {
-            grade = 'D';
-        } else {
-            grade = 'F';
-        }
-    }
-    void displayResult() {
-        cout << "Roll Number: " << rollNumber << endl;
-        cout << "Name: " << name << endl;
-        cout << "Total Marks: " << totalMarks << endl;
-        cout << "Percentage: " << percentage << "%" << endl;
-        cout << "Grade: " << grade << endl;
+    // Constructor
+    Student(int r, string n)
+    {
+        rollNo = r;
+        name = n;
+        total = 0;
+        percentage = 0;
+        count++;
     }
 
+    // Function to input marks
+    void inputMarks()
+    {
+        cout << "Enter marks in 5 subjects: "<< endl;
 
+        for(int i = 0; i < 5; i++)
+        {
+            cin >> marks[i];
+            total += marks[i];
+        }
+
+        percentage = total / 5;
+    }
+
+    // Function to display result
+    void displayResult()
+    {
+        cout << "\n----- Student Result -----";
+        cout << "\nRoll Number: " << rollNo;
+        cout << "\nName: " << name;
+        cout << "\nTotal Marks: " << total;
+        cout << "\nPercentage: " << percentage << "%";
+
+        if(percentage >= 90)
+            cout << "\nGrade: A+";
+        else if(percentage >= 80)
+            cout << "\nGrade: A";
+        else if(percentage >= 70)
+            cout << "\nGrade: B";
+        else if(percentage >= 60)
+            cout << "\nGrade: C";
+        else if(percentage >= 40)
+            cout << "\nGrade: D";
+        else
+            cout << "\nGrade: Fail";
+    }
+
+    // Static function
+    static void showCount()
+    {
+        cout << "\nTotal Students: " << count;
+    }
 };
-int main() {
-    int rollNumber;
-    string name;
-    int marks[5];
 
-    cout << "Enter Roll Number: ";
-    cin >> rollNumber;
-    cin.ignore(); // Ignore the newline character after reading roll number
+// Initialize static data member
+int Student::count = 0;
 
-    cout << "Enter Name: ";
-    getline(cin, name);
-
-    cout << "Enter Marks in 5 subjects: ";
-    for (int i = 0; i < 5; ++i) {
-        cin >> marks[i];
-    }
-
-    Student s1(rollNumber, name, marks);
-    s1.calculateResult();
+int main()
+{
+    Student s1(101, "Anmol");
+    s1.inputMarks();
     s1.displayResult();
 
-    cout << "Total Students Created: " << Student::getStudentCount() << endl;
+    Student s2(102, "Rahul");
+    s2.inputMarks();
+    s2.displayResult();
+
+    Student::showCount();
 
     return 0;
 }
