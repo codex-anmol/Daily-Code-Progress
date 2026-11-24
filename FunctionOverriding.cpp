@@ -6,14 +6,14 @@ using namespace std;
 class Student {
 public:
     virtual void display() {
-        cout << "Student studies." << endl;
+        cout <<"parent class"<< "Student studies." << endl;
     }
 };
 
 class CollegeStudent : public Student {
 public:
     void display() override {
-        cout << "College student attends classes." << endl;
+        cout<<"child class "<< "College student attends classes." << endl;
     }
 };
 
