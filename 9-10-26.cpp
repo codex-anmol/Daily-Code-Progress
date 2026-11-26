@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 class hello {
 public:
     virtual void hi(int a, int b)
@@ -12,7 +11,6 @@ public:
         cout << "Parent class" << endl;
     }
 };
-
 class hello2 : public hello {
 public:
     void hi(int a, int b) override
@@ -26,7 +24,6 @@ public:
         cout << "Child class" << endl;
     }
 };
-
 int main()
 {
     hello* s1;
